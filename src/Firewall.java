@@ -130,7 +130,7 @@ public class Firewall {
       System.out.println(nok);
       nok = fw.acceptPacket("inbound","tcp",65535, "123.45.6.77");
       System.out.println(nok);
-      nok = fw.acceptPacket("inbound","tcp",123, "255.255.255");
+      nok = fw.acceptPacket("inbound","tcp",123, "255.255.255.255");
       System.out.println(nok);
     }catch (FileNotFoundException e) {
       e.printStackTrace();
