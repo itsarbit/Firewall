@@ -34,7 +34,7 @@ public class Firewall {
         String[] cells = line.split(",");
         String portString = cells[2];
         String ipString = cells[3];
-        int portMin = 0;
+        int portMin = 1;
         int portMax = 65535;
         long ipMin = hashIP("0.0.0.0");
         long ipMax = hashIP("255.255.255.255");
@@ -125,6 +125,12 @@ public class Firewall {
       nok = fw.acceptPacket("outbound","udp", 2001,"52.12.48.92");
       System.out.println(nok);
       nok = fw.acceptPacket("inbound","tcp",2255, "123.45.6.77");
+      System.out.println(nok);
+      nok = fw.acceptPacket("inbound","tcp",0, "123.45.6.77");
+      System.out.println(nok);
+      nok = fw.acceptPacket("inbound","tcp",65535, "123.45.6.77");
+      System.out.println(nok);
+      nok = fw.acceptPacket("inbound","tcp",123, "255.255.255");
       System.out.println(nok);
     }catch (FileNotFoundException e) {
       e.printStackTrace();
